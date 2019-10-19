@@ -13,6 +13,11 @@ app.use(express.urlencoded({extended :true}));
 //Set up a middleware
 app.use(express.static('public'));
 
+//Routes
+const webhook = require('./routes/webhook');
+
+//Route middlewares
+app.use('/webhook', webhook);
 
 //CONNECT TO DB
 mongoose.connect(process.env.DB_CONNECTION, {
