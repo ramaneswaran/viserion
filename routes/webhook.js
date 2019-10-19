@@ -6,7 +6,8 @@ router.use(express.json());
 router.use(express.urlencoded({extended: true}));
 
 router.post('/search', (req, res)=>{
-    console.log('got request');
+    console.log(req.body);
+
 })
 
 module.exports = router;
