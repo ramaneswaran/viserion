@@ -23,18 +23,18 @@ app.get('/', (req, res)=>{
     res.send('Aegon');
 });
 
-//CONNECT TO DB
-mongoose.connect(process.env.DB_CONNECTION, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
- }).then(()=>{
-     console.log(`Connected to DB`)
- }).catch(err=>{
-     console.log(`DB error ${err.message}`);
-     process.exit(-1)
- });
+// //CONNECT TO DB
+// mongoose.connect(process.env.DB_CONNECTION, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+//  }).then(()=>{
+//      console.log(`Connected to DB`)
+//  }).catch(err=>{
+//      console.log(`DB error ${err.message}`);
+//      process.exit(-1)
+//  });
 
 
 app.listen(process.env.PORT || 3000, ()=>{
