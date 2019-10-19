@@ -36,6 +36,10 @@ const survivorSchema = mongoose.Schema({
     contact: {
         type: String,
         required: true,
+    },
+    relation: {
+        type : String,
+        required: true,
     }
 });
 
