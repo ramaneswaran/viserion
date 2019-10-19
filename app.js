@@ -19,6 +19,10 @@ const webhook = require('./routes/webhook');
 //Route middlewares
 app.use('/webhook', webhook);
 
+app.get('/', (req, res)=>{
+    res.send('Aegon');
+});
+
 //CONNECT TO DB
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
