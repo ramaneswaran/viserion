@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended :true}));
 app.use(express.static('public'));
 
 //Routes
-//const webhook = require('./routes/webhook');
+const webhook = require('./routes/webhook');
 
 //Route middlewares
 //app.use('/webhook', webhook);
