@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
+//Import DB models
+const Survivor = require('../models/Survivor');
+const Camp = require('../models/Camp');
+const Contact = require('../models/Contact');
+
 //Setting up middleware for parsing post request
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
 
-router.post('/search', (req, res)=>{
+router.post('/search', (req, res)=> {
     //Use intent name to give diff response
 
     
@@ -13,10 +18,18 @@ router.post('/search', (req, res)=>{
     
     if(intentName == 'searchByName'){
         const name = req.queryResult.parameter.name;
-        var response = {
-            'fulfillment_text': 'Dont worry we will find '+name,
-        }
-        //Also if result turns out empty return sorry message
+        Survivor.find({name: name}, (err, docs)=> {
+            let fulfillment_text = '';
+            if(err) fullfillment_text = 'Some error occured';
+
+            if(!docs) fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+            else if(docs.length>1){
+                fullfillment_text = 'There were multiple matches, please enter the age';
+            }
+            var response = {
+                'fulfillment_text': 'Don\'t worry we will find '+name,
+            }
+        });
     }
     else if(intentName == 'whatIsStatus'){
         //Send the medical condition
