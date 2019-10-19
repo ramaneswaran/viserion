@@ -7,6 +7,7 @@ router.use(express.urlencoded({extended: true}));
 
 router.post('/search', (req, res)=>{
     console.log(req.body);
+    console.log("Say something")
 
 })
 
