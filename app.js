@@ -14,10 +14,10 @@ app.use(express.urlencoded({extended :true}));
 app.use(express.static('public'));
 
 //Routes
-const webhook = require('./routes/webhook');
+//const webhook = require('./routes/webhook');
 
 //Route middlewares
-app.use('/webhook', webhook);
+//app.use('/webhook', webhook);
 
 app.get('/', (req, res)=>{
     res.send('Aegon');
