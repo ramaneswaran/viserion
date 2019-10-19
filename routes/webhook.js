@@ -18,19 +18,25 @@ router.post('/search', (req, res)=>{
         }
         //Also if result turns out empty return sorry message
     }
-    else if(intentName == 'whatIsStatus'):
+    else if(intentName == 'whatIsStatus'){
         //Send the medical condition
-    else if(intentName == 'whereIsHE'):
+        }
+    else if(intentName == 'whereIsHE'){
         //send camp data
-    else if(intentName == 'connect'):
+    }
+    else if(intentName == 'connect'){
         //let them know if they can connect
-    else if(intentName == 'searchByAge'):
+    }
+    else if(intentName == 'searchByAge'){
         //Refine result or give up
-    else if(intentName == 'scheduleCall'):
+    }
+    else if(intentName == 'scheduleCall'){
         //Schedule a call and call it a day
-    else if(intentName == 'diffNameSearch'):
+        }
+    else if(intentName == 'diffNameSearch'){
         //End the conversation
+    }
     res.json(response)
-})
+});
 
 module.exports = router;
