@@ -13,6 +13,8 @@ app.use(express.urlencoded({extended :true}));
 //Set up a middleware
 app.use(express.static('public'));
 
+//View engine
+app.use('view engine', 'ejs')
 //Routes
 const webhook = require('./routes/webhook');
 const postData  = require('./routes/post');
@@ -24,7 +26,7 @@ app.use('/post', postData);
 app.use('/data', data);
 
 app.get('/', (req, res)=>{
-    res.send('Aegon');
+    res.render('agora');
 });
 
 //CONNECT TO DB
