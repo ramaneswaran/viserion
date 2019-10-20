@@ -92,6 +92,7 @@ router.post('/search', (req, res)=> {
                 fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
             }
             else{
+                console.log("ENTERED OUTER ELSE");
                 if(docs.length>1){
                     fulfillment_text = 'There were multiple matches, please enter the age';
                 }
@@ -99,6 +100,7 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 }
                 else{
+                    console.log("IN ELSE PART");
                     const campID = docs[0].campID;
                     Camp.find({campID: campID}, (err, docs)=>{
                         if(err) fulfillment_text = 'We encountered some error in locating the camp.Please try again';
