@@ -24,7 +24,6 @@ router.post('/search', (req, res)=> {
         'fulfillment_text': fulfillment_text,
     }
 
-    console.log(req.body);
     if(intentName == 'searchByName'){
         const name = req.body.queryResult.parameters.name.name;
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
@@ -52,7 +51,7 @@ router.post('/search', (req, res)=> {
         });
     }
     else if(intentName == 'whatIsStatus'){
-        console.log(req.body);
+        const name = req.body.queryResult.parameters.name.name;
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) condition = 'We encountered some error in finding '+name+'in our database.Please try again';
             
@@ -83,6 +82,7 @@ router.post('/search', (req, res)=> {
         });
     }
     else if(intentName == 'whereIsHE'){
+        const name = req.body.queryResult.parameters.name.name;
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) fulfillment_text = 'We encountered some error in finding '+name+'.Please try again';
             
