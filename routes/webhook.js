@@ -17,7 +17,7 @@ router.post('/search', (req, res)=> {
     // const intentName = req.body.intent.displayName;
     
     
-        const name = req.body.queryResult.parameter.name;
+       
         console.log(req.body);
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             let fulfilment_text = '';
