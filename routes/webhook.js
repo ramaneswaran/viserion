@@ -96,7 +96,6 @@ router.post('/search', (req, res)=> {
                 res.json(response);
             }
             else{
-                console.log("ENTERED OUTER ELSE");
                 if(docs.length>1){
                     fulfillment_text = 'There were multiple matches, please enter the age';
                     response = {
@@ -112,7 +111,6 @@ router.post('/search', (req, res)=> {
                     res.json(response);
                 }
                 else{
-                    console.log("IN ELSE PART");
                     const campID = docs[0].campID;
                     Camp.find({campID: campID}, (err, docs)=>{
                         
@@ -132,8 +130,8 @@ router.post('/search', (req, res)=> {
     }
     else if(intentName == 'searchByAge'){
         console.log(req.body)
-        const age = 12;
-        const name = 'somebitches';
+        const age = req.body.queryResult.parameters.age.amount - 0;
+        const name = req.body.queryResult.parameters.name.name;
         Survivor.find({name: {"$regex": name, "$options": "i"}, age: age}, (err, docs)=> {
             if(err) fulfillment_text = 'We encountered some error in finding '+name+'.Please try again';
             
@@ -159,18 +157,40 @@ router.post('/search', (req, res)=> {
             res.json(response);
         });
     }
+    else if(intentName == 'diffNameSearch'){
+        const name = req.body.queryResult.parameters.name.name;
+        Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
+            if(err) fulfillment_text = 'We encountered an error in finding '+name+'in our database.Please try again';
+            
+            if(!docs) {
+                fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+            }
+            else{
+                if(docs.length>1){
+                    fulfillment_text = 'There were multiple matches, please enter the age';
+                }
+                else if(docs.length == 0){
+                    fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+                }
+                else {
+                    fulfillment_text = 'We have successfully located a '+name+' in one our camps, the age mentioned is '+docs[0].age;
+                }
+            }
+            response = {
+                'fulfillment_text': fulfillment_text,
+            }
+
+            res.json(response);
+        });
+    }
+
     // else if(intentName == 'connect'){
     //     //let them know if they can connect
-    // }
-    // else if(intentName == 'searchByAge'){
-    //     //Refine result or give up
     // }
     // else if(intentName == 'scheduleCall'){
     //     //Schedule a call and call it a day
     //     }
-    // else if(intentName == 'diffNameSearch'){
-    //     //End the conversation
-    // }
+    
     
 });
 module.exports = router;
