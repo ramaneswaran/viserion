@@ -102,8 +102,8 @@ router.post('/search', (req, res)=> {
                 else{
                     console.log("IN ELSE PART");
                     const campID = docs[0].campID;
-                    Camp.find({campID: campID}, (err, docs)=>{
-                        new Promise((resolve, reject)=>{
+                    Camp.find({campID: campID}, async (err, docs)=>{
+                        await new Promise((resolve, reject)=>{
                             if(err) reject(err);
                             else resolve(docs);
                         }).then((docs)=>{
