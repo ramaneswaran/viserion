@@ -14,10 +14,10 @@ router.post('/search', (req, res)=> {
     //Use intent name to give diff response
 
     
-    const intentName = req.body.intent.displayName;
+    // const intentName = req.body.intent.displayName;
     
     
-        const name = req.queryResult.parameter.name;
+        const name = req.body.queryResult.parameter.name;
         console.log(req.body);
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             let fulfilment_text = '';
