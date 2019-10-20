@@ -12,7 +12,19 @@ router.get('/', (req, res)=>{
 
 router.get('/login', (req, res)=>{
     res.render('login');
-})
+});
+
+router.get('/profile', (req, res)=>{
+    res.render('profile');
+});
+
+router.get('/profile/tyrion', (req, res)=>{
+    res.render('chatbot');
+});
+
+router.get('/profile/connect', (req, res)=>{
+    res.render('connect')
+});
 
 
 
