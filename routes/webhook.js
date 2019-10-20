@@ -82,7 +82,9 @@ router.post('/search', (req, res)=> {
         });
     }
     else if(intentName == 'whereIsHE'){
+        console.log(req.body);
         const name = req.body.queryResult.parameters.name.name;
+
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) fulfillment_text = 'We encountered some error in finding '+name+'.Please try again';
             
