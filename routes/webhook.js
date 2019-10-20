@@ -157,7 +157,7 @@ router.post('/search', (req, res)=> {
             res.json(response);
         });
     }
-    else if(intentName == 'diffNameSearch'){
+    else if(intentName == 'diffNameSearchYes'){
         const name = req.body.queryResult.parameters.name.name;
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) fulfillment_text = 'We encountered an error in finding '+name+'in our database.Please try again';
