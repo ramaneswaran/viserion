@@ -90,38 +90,44 @@ router.post('/search', (req, res)=> {
             
             if(!docs) {
                 fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+                response = {
+                    'fulfillment_text': fulfillment_text,
+                }
+                res.json(response);
             }
             else{
                 console.log("ENTERED OUTER ELSE");
                 if(docs.length>1){
                     fulfillment_text = 'There were multiple matches, please enter the age';
+                    response = {
+                        'fulfillment_text': fulfillment_text,
+                    }
+                    res.json(response);
                 }
                 else if(docs.length == 0){
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+                    response = {
+                        'fulfillment_text': fulfillment_text,
+                    }
+                    res.json(response);
                 }
                 else{
                     console.log("IN ELSE PART");
                     const campID = docs[0].campID;
-                    Camp.find({campID: campID}, async (err, docs)=>{
-                        await new Promise((resolve, reject)=>{
-                            if(err) reject(err);
-                            else resolve(docs);
-                        }).then((docs)=>{
-                            fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
-                        }).catch((err)=>{
-                            fulfillment_text = 'We encountered some error in locating the camp.Please try again';
-                        });
-                        // if(err) fulfillment_text = 'We encountered some error in locating the camp.Please try again';
-                        // else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
+                    Camp.find({campID: campID}, (err, docs)=>{
+                        
+                        if(err) fulfillment_text = 'We encountered some error in locating the camp.Please try again';
+                        else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
+
+                        response = {
+                            'fulfillment_text': fulfillment_text,
+                        }
+                        res.json(response);
                     });
                     
                 }
             }
-            response = {
-                'fulfillment_text': fulfillment_text,
-            }
-
-            res.json(response);
+               
         });
     }
     else if(intentName == 'searchByAge'){
