@@ -15,11 +15,11 @@ app.use(express.static('public'));
 
 //Routes
 const webhook = require('./routes/webhook');
-const post = require('./routes/post');
+const postData  = require('./routes/post');
 
 //Route middlewares
 //app.use('/webhook', webhook);
-app.use('/post', post);
+app.use('/post', postData);
 
 app.get('/', (req, res)=>{
     res.send('Aegon');
