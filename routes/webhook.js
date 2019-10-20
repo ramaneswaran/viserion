@@ -25,10 +25,10 @@ router.post('/search', (req, res)=> {
 
             if(docs.length == 0) fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
             else if(docs.length>1){
-                fullfillment_text = 'There were multiple matches, please enter the age';
+                fulfillment_text = 'There were multiple matches, please enter the age';
             }
             else {
-                fullfillment_text = 'We have located '+name;
+                fulfillment_text = 'We have located '+name;
             }
             var response = {
                 'fulfillment_text': 'Don\'t worry we will find '+name,
