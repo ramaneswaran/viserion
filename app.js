@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
 
 require('dotenv/config');
 
@@ -21,6 +22,7 @@ const webhook = require('./routes/webhook');
 const postData  = require('./routes/post');
 const data = require('./routes/data');
 const index = require('./routes/index');
+const authRoutes = require('./routes/auth-routes');
 
 //Route middlewares
 app.use('/webhook', webhook);
