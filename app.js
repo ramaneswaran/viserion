@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended :true}));
 app.use(express.static('public'));
 
 //View engine
-app.use('view engine', 'ejs')
+app.set('view engine', 'ejs')
 //Routes
 const webhook = require('./routes/webhook');
 const postData  = require('./routes/post');
