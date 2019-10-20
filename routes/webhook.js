@@ -40,7 +40,7 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We have located '+name;
                 }
             }
-            var response = {
+            response = {
                 'fulfillment_text': fulfilment_text,
             }
         });
