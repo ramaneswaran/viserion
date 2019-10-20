@@ -13,7 +13,9 @@ router.use(express.urlencoded({extended: true}));
 router.post('/search', (req, res)=> {
     //Use intent name to give diff response
     const name = req.body.queryResult.parameters.name.name;
-   
+    const intentName = req.body.queryResult.intent.displayName;
+
+    console.log(intentName)
     //Create fulfillment_text variable
     var fulfillment_text = 'Some text initially';
 
@@ -35,10 +37,10 @@ router.post('/search', (req, res)=> {
                 fulfillment_text = 'There were multiple matches, please enter the age';
             }
             else if(docs.length == 0){
-                fulfillment_text = 'There were zero matches';
+                fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
             }
             else {
-                fulfillment_text = 'We have located '+name;
+                fulfillment_text = 'We have successfully located'+name;
             }
         }
         response = {
