@@ -67,6 +67,5 @@ router.post('/search', (req, res)=> {
     //     //End the conversation
     // }
     
-    res.json(response)
 });
 module.exports = router;
