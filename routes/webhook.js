@@ -12,7 +12,7 @@ router.use(express.urlencoded({extended: true}));
 
 router.post('/search', (req, res)=> {
     //Use intent name to give diff response
-    const name = req.body.queryResult.parameters.name.name;
+    
     const intentName = req.body.queryResult.intent.displayName;
 
     
@@ -26,6 +26,7 @@ router.post('/search', (req, res)=> {
 
     console.log(req.body);
     if(intentName == 'searchByName'){
+        const name = req.body.queryResult.parameters.name.name;
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) fulfillment_text = 'We encountered an error in finding '+name+'in our database.Please try again';
             
@@ -51,6 +52,7 @@ router.post('/search', (req, res)=> {
         });
     }
     else if(intentName == 'whatIsStatus'){
+        console.log(req.body);
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) condition = 'We encountered some error in finding '+name+'in our database.Please try again';
             
@@ -101,6 +103,35 @@ router.post('/search', (req, res)=> {
                         else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs.address;
                     });
                     
+                }
+            }
+            response = {
+                'fulfillment_text': fulfillment_text,
+            }
+
+            res.json(response);
+        });
+    }
+    else if(intentName == 'searchByAge'){
+        console.log(req.body)
+        const age = 12;
+        const name = 'somebitches';
+        Survivor.find({name: {"$regex": name, "$options": "i"}, age: age}, (err, docs)=> {
+            if(err) fulfillment_text = 'We encountered some error in finding '+name+'.Please try again';
+            
+            if(!docs) {
+                fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+            }
+            else{
+                if(docs.length>1){
+                    fulfillment_text = 'There were multiple matches, we cannot refine search further';
+
+                }
+                else if(docs.length == 0){
+                    fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
+                }
+                else{
+                    fulfillment_text = 'We have successfully located a '+name+' in one our camps, the age mentioned is '+docs.age;                  
                 }
             }
             response = {
