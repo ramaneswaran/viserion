@@ -18,7 +18,7 @@ router.post('/search', (req, res)=> {
     
     
         const name = req.queryResult.parameter.name;
-        
+        console.log(req.body);
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             let fulfilment_text = '';
             if(err) fulfillment_text = 'Some error occured';
