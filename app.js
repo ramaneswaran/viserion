@@ -15,18 +15,21 @@ app.use(express.static('public'));
 
 //View engine
 app.set('view engine', 'ejs')
+
 //Routes
 const webhook = require('./routes/webhook');
 const postData  = require('./routes/post');
 const data = require('./routes/data');
+const index = require('./routes/index');
 
 //Route middlewares
 app.use('/webhook', webhook);
 app.use('/post', postData);
 app.use('/data', data);
+app.use('/index', index);
 
 app.get('/', (req, res)=>{
-    res.render('agora');
+    res.send('Project Aegon')
 });
 
 //CONNECT TO DB
