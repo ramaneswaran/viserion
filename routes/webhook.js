@@ -20,18 +20,25 @@ router.post('/search', (req, res)=> {
        
         console.log(req.body);
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
-            let fulfilment_text = '';
+            let fulfilment_text = 'Radnom';
             if(err) fulfillment_text = 'Some error occured';
-
-            if(docs.length == 0) fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
-            else if(docs.length>1){
-                fulfillment_text = 'There were multiple matches, please enter the age';
+            
+            if(!docs) {
+                fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
             }
-            else {
-                fulfillment_text = 'We have located '+name;
+            else{
+                if(docs.length>1){
+                    fulfillment_text = 'There were multiple matches, please enter the age';
+                }
+                else if(docs.length == 0){
+                    fulfillment_text = 'There were zero matches';
+                }
+                else {
+                    fulfillment_text = 'We have located '+name;
+                }
             }
             var response = {
-                'fulfillment_text': 'Don\'t worry we will find '+name,
+                'fulfillment_text': fulfilment_text,
             }
         });
     
