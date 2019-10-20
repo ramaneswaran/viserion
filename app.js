@@ -18,7 +18,7 @@ const webhook = require('./routes/webhook');
 const postData  = require('./routes/post');
 
 //Route middlewares
-//app.use('/webhook', webhook);
+app.use('/webhook', webhook);
 app.use('/post', postData);
 
 app.get('/', (req, res)=>{
