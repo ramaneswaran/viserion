@@ -15,7 +15,7 @@ router.post('/search', (req, res)=> {
 
     
     // const intentName = req.body.intent.displayName;
-    
+    const name = req.body.queryResult.parameters.name;
     
        
         console.log(req.body);
