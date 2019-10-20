@@ -16,10 +16,13 @@ router.post('/search', (req, res)=> {
     
     // const intentName = req.body.intent.displayName;
     const name = req.body.queryResult.parameters.name;
-    
+        var response = {
+            'fulfillment_text': 'Initial',
+        }
        
         console.log(req.body);
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
+            console.log('Inside this find function');
             let fulfilment_text = 'Radnom';
             if(err) fulfillment_text = 'Some error occured';
             
