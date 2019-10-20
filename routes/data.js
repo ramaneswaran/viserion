@@ -12,7 +12,7 @@ const Doctor = require('../models/Doctor');
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
 
-module.exports = router;
+
 
 /*
 PLOT 1 : PATIENTS AT EACH CAMP : BAR PLOT
@@ -124,3 +124,6 @@ router.post('/plot5', (req, res)=>{
         else res.json(result);
     });
 });
+
+
+module.exports = router;
