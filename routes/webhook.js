@@ -24,7 +24,7 @@ router.post('/search', (req, res)=> {
 
     console.log(req.body);
     Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
-        console.log('Inside this find function');
+        console.log('Inside this find function with name as '+ name);
         if(err) fulfillment_text = 'Some error occured';
         
         if(!docs) {
@@ -42,7 +42,7 @@ router.post('/search', (req, res)=> {
             }
         }
         response = {
-            'fulfillment_text': fulfilment_text,
+            'fulfillment_text': fulfillment_text,
         }
     });
     
