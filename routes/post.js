@@ -24,3 +24,35 @@ router.post('/deceased', (req, res)=>{
         res.json(savedDoc);
     })
 });
+
+router.post('/camp', (req, res)=>{
+    const newCamp = new Camp({
+        campID: req.body.campID,
+        address: req.body.address,
+    });
+    newCamp.save((err, savedDoc)=>{
+        if(err) console.log(err);
+        else console.log(savedDoc);
+        res.json(savedDoc);
+    })
+});
+
+router.post('/survivor', (req, res)=>{
+    const newSurvivor = new Survivor({
+        name: req.body.name,
+        age: req.body.age,
+        sex: req.body.sex,
+        disability: req.body.disability,
+        campID: req.body.campID,
+        medicalTag: req.body.medicalTag,
+        rescuedFrom: req.body.rescuedFrom,
+        contact: req.body.contact,
+        relation: req.body.relation,
+    });
+    newSurvivor.save((err, savedDoc)=>{
+        if(err) console.log(err);
+        else console.log(savedDoc);
+        res.json(savedDoc);
+    })
+});
+module.exports = router;
