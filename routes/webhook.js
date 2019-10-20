@@ -12,7 +12,7 @@ router.use(express.urlencoded({extended: true}));
 
 router.post('/search', (req, res)=> {
     //Use intent name to give diff response
-    const name = req.body.queryResult.parameters.name;
+    const name = req.body.queryResult.parameters.name.name;
    
     //Create fulfillment_text variable
     var fulfillment_text = 'Some text initially';
