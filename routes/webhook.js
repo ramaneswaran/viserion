@@ -40,7 +40,7 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 }
                 else {
-                    fulfillment_text = 'We have successfully located a '+name+' in one our camps, the age mentioned is '+docs.age;
+                    fulfillment_text = 'We have successfully located a '+name+' in one our camps, the age mentioned is '+docs[0].age;
                 }
             }
             response = {
@@ -66,7 +66,7 @@ router.post('/search', (req, res)=> {
                     condition = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 }
                 else{
-                    const medicalTag = docs.medicalTag;
+                    const medicalTag = docs[0].medicalTag;
                     var condition = '';
                     if(medicalTag == 'red') condition = name+' has suffered some injuries and is being attended by doctors';
                     else if(medicalTag == 'blue') condition = name+' has suffered minor injuries and is all right';
@@ -97,10 +97,10 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 }
                 else{
-                    const campID = docs.campID;
+                    const campID = docs[0].campID;
                     Camp.find({campID: campID}, (err, docs)=>{
                         if(err) fulfillment_text = 'We encountered some error in locating the camp.Please try again';
-                        else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs.address;
+                        else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
                     });
                     
                 }
@@ -131,7 +131,7 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 }
                 else{
-                    fulfillment_text = 'We have successfully located a '+name+' in one our camps, the age mentioned is '+docs.age;                  
+                    fulfillment_text = 'We have successfully located a '+name+' in one our camps, the age mentioned is '+docs[0].age;                  
                 }
             }
             response = {
