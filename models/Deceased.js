@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const deceasedSchema = mongoose.Schema({
-    AgeGroup: {
+    ageGroup: {
         type: String,
         required: true,
     },
