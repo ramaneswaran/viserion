@@ -44,6 +44,8 @@ router.post('/search', (req, res)=> {
         response = {
             'fulfillment_text': fulfillment_text,
         }
+
+        console.log(response);
     });
     
     // else if(intentName == 'whatIsStatus'){
