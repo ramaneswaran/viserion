@@ -16,7 +16,7 @@ router.post('/search', (req, res)=> {
     
     const intentName = req.body.intent.displayName;
     
-    if(intentName == 'searchByName'){
+    
         const name = req.queryResult.parameter.name;
         
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
@@ -53,7 +53,7 @@ router.post('/search', (req, res)=> {
     // else if(intentName == 'diffNameSearch'){
     //     //End the conversation
     // }
-    }
+    
     res.json(response)
 });
 module.exports = router;
