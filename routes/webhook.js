@@ -103,8 +103,16 @@ router.post('/search', (req, res)=> {
                     console.log("IN ELSE PART");
                     const campID = docs[0].campID;
                     Camp.find({campID: campID}, (err, docs)=>{
-                        if(err) fulfillment_text = 'We encountered some error in locating the camp.Please try again';
-                        else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
+                        new Promise((resolve, reject)=>{
+                            if(err) reject(err);
+                            else resolve(docs);
+                        }).then((docs)=>{
+                            fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
+                        }).catch((err)=>{
+                            fulfillment_text = 'We encountered some error in locating the camp.Please try again';
+                        });
+                        // if(err) fulfillment_text = 'We encountered some error in locating the camp.Please try again';
+                        // else fulfillment_text = name+ ' is in camp '+campID+' which is located at '+docs[0].address;
                     });
                     
                 }
