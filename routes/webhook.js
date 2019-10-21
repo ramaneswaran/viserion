@@ -176,6 +176,16 @@ router.post('/search', (req, res)=> {
                 } else {
                     rId = docs[0].id;
                     console.log('Got rId ',rId);
+
+                    Time.find({}, (err, docs)=>{
+                        if(err) console.log(err);
+                        if(!docs) {
+                            console.log('Resulted in null return');
+                        } else{
+                            freeTime = docs[0].time;
+                            console.log('Got the time ',time);
+                        }
+                    })
             }
         
     
