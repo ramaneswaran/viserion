@@ -9,6 +9,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     }
+    uid: {
+        type: String,
+        required: true,
+    }
 });
 
 module.exports = mongoose.model('UserModel', userSchema);
