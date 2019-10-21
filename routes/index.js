@@ -22,7 +22,7 @@ router.use(passport.session());
 const authCheck = (req, res, next) =>{
     if(!req.user){
         //User not logged in
-        res.redirect('/login');
+        res.redirect('/index/login');
 
     }else{
         next();
@@ -37,12 +37,17 @@ router.get('/login', (req, res)=>{
     res.render('login');
 });
 
+router.get('/logout',(req, res)=>{
+    req.logout();
+    res.redirect('/index');
+})
+
 router.get('/google', passport.authenticate('google', {
     scope: ['profile']
 }));
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res)=>{
-    res.send('Callback uri');
+    res.redirect('/index/profile');
 })
 
 router.get('/profile', authCheck, (req, res)=>{
