@@ -123,6 +123,9 @@
   <div id='keys'>
       <% if(allowed === true) {%>
         <h4>Here are your keys</h4>
+        <span>App ID :<%= options.AppID %></span><br>
+        <span>Channel Name: <%= options.channel %></span><br>
+        <span>Token: <%= options.token %></span>
     <% } else{ %>
       <h4>No call scheduled right now</h4>
     <% } %>

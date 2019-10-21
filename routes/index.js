@@ -12,7 +12,7 @@ const Schedule = require('../models/Schedule');
 options = {
     AppID:  "f8bfc6e6ef824ef9b719490b994d6a96",
     token: "006f8bfc6e6ef824ef9b719490b994d6a96IADaPN83ucHI1UIKhBlPTUDmZy+DvGteSi+uKt7r6XW9Dh/5z3QAAAAAEAD27b1wns2uXQEAAQCeza5d",
-    channelName: "connect"
+    channel: "connect"
 }
 
 
@@ -96,7 +96,7 @@ router.get('/profile/tyrion', authCheck, (req, res)=>{
 
 router.get('/profile/connect', authCheck, (req, res)=>{
     const allowed = authorise(req.user.token);
-    res.render('connect', {allowed: allowed});
+    res.render('connect', {allowed: allowed, options:options});
 });
 
 
