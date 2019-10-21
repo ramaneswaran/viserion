@@ -44,15 +44,7 @@ router.post('/search', (req, res)=> {
                 }
             }
             response = {
-                'fulfillment_text': fulfillment_text,
-                "outputContexts": [
-                    {
-                      "lifespanCount": 8,
-                      "parameters": {
-                        name: name
-                      }
-                    }]
-            
+                'fulfillment_text': fulfillment_text,            
             }
 
             res.json(response);
@@ -84,13 +76,6 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': condition,
-                "outputContexts": [
-                    {
-                      "lifespanCount": 8,
-                      "parameters": {
-                        name: name
-                      }
-                    }]
             }
 
             res.json(response);
@@ -107,13 +92,7 @@ router.post('/search', (req, res)=> {
                 fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 response = {
                     'fulfillment_text': fulfillment_text,
-                    "outputContexts": [
-                        {
-                          "lifespanCount": 8,
-                          "parameters": {
-                            name: name
-                          }
-                        }]
+                    
                 }
                 res.json(response);
             }
@@ -122,13 +101,7 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'There were multiple matches, please enter the age';
                     response = {
                         'fulfillment_text': fulfillment_text,
-                        "outputContexts": [
-                            {
-                              "lifespanCount": 8,
-                              "parameters": {
-                                name: name
-                              }
-                            }]
+                        
                     }
                     res.json(response);
                 }
@@ -136,13 +109,7 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                     response = {
                         'fulfillment_text': fulfillment_text,
-                        "outputContexts": [
-                            {
-                              "lifespanCount": 8,
-                              "parameters": {
-                                name: name
-                              }
-                            }]
+                        
                     }
                     res.json(response);
                 }
@@ -155,13 +122,6 @@ router.post('/search', (req, res)=> {
 
                         response = {
                             'fulfillment_text': fulfillment_text,
-                            "outputContexts": [
-                                {
-                                  "lifespanCount": 8,
-                                  "parameters": {
-                                    name: name
-                                  }
-                                }]
                         }
                         res.json(response);
                     });
@@ -195,13 +155,6 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': fulfillment_text,
-                "outputContexts": [
-                    {
-                      "lifespanCount": 8,
-                      "parameters": {
-                        name: name
-                      }
-                    }]
             }
 
             res.json(response);
@@ -228,13 +181,6 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': fulfillment_text,
-                "outputContexts": [
-                    {
-                      "lifespanCount": 8,
-                      "parameters": {
-                        name: name
-                      }
-                    }]
             }
 
             res.json(response);
