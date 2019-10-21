@@ -50,8 +50,8 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res)=>{
     res.redirect('/index/profile');
 })
 
-router.get('/profile', authCheck, (req, res)=>{
-    res.render('profile');
+router.get('/profile', authCheck,(req, res)=>{
+    res.render('profile', {user: req.user})
 });
 
 router.get('/profile/tyrion', authCheck, (req, res)=>{
@@ -59,6 +59,7 @@ router.get('/profile/tyrion', authCheck, (req, res)=>{
 });
 
 router.get('/profile/connect', authCheck, (req, res)=>{
+
     res.render('connect')
 });
 

@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+const uniqid = require('uniqid');
 
 //UserModel
 const UserModel = require('../models/UserModel');
@@ -31,7 +32,8 @@ passport.use(
             } else{
                 new UserModel({
                     username: profile.displayName,
-                    googleId: profile.id
+                    googleId: profile.id,
+                    uid: uniqid(),
                 }).save().then((savedUser)=>{
                     console.log(savedUser);
                     done(null, savedUser);
