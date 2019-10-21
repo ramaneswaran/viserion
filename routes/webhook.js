@@ -189,8 +189,9 @@ router.post('/search', (req, res)=> {
                                 time: freeTime
                             }).save().then((savedTime)=>{
                                 console.log(savedTime);
+                                dateString = savedTime;
                                 var response = {
-                                    'fulfillment_text': 'Your call has been scheduled for '+savedTime.toString
+                                    'fulfillment_text': 'Your call has been scheduled for '+savedTime.toString()
                                 }
 
                                 res.json(response);
