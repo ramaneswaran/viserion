@@ -7,6 +7,7 @@ const Camp = require('../models/Camp');
 const Contact = require('../models/Contact');
 const Deceased = require('../models/Deceased');
 const Doctor = require('../models/Doctor');
+const Time = require('../models/Time');
 
 //Setting up middleware for parsing post request
 router.use(express.json());
@@ -25,6 +26,13 @@ router.post('/deceased', (req, res)=>{
     })
 });
 
+router.post('/time', (req, res)=>{
+    new Time({
+        time: new Date()
+    }).save().then((savedTime)=>{
+        res.json(savedTime);
+    });
+});
 router.post('/camp', (req, res)=>{
     const newCamp = new Camp({
         campID: req.body.campID,
