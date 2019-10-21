@@ -5,6 +5,11 @@ const cookieSession = require('cookie-session');
 const passportSetup = require('../config/passport-setup');
 
 
+//DB Models
+const Schedule = require('../models/Schedule');
+
+
+
 //Setting up middleware for parsing post request
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
@@ -13,6 +18,29 @@ router.use(cookieSession({
     maxAge: 24*60*60*1000,
     keys : ['balerion']
 }));
+
+//Helper Function
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
+}
+
+//Function to authenticate call
+const authorise = function(token){
+    Schedule.find({token: token }, (err, documents)=>{
+        if(err) console.log(err);
+        if(!docs){
+            console.log("Null value returned");
+        } else{
+            const initTime = docs[0].time;
+            const finTime = addMinutes(date, 5);
+            const curTime = new Date();
+
+            if( (curTime >= initTime) && (finalTime> curTime)){
+                return true;
+            }else return false
+        }
+    })
+}
 
 //Initialise passport
 router.use(passport.initialize());
@@ -59,8 +87,8 @@ router.get('/profile/tyrion', authCheck, (req, res)=>{
 });
 
 router.get('/profile/connect', authCheck, (req, res)=>{
-
-    res.render('connect')
+    const allowed = authorise(req.user.token);
+    res.render('connect', {allowed: allowed});
 });
 
 
