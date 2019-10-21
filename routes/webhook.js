@@ -13,6 +13,11 @@ const Time = require('../models/Time');
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
 
+//Helper Function
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
+}
+
 router.post('/search', (req, res)=> {
     //Use intent name to give diff response
     const intentName = req.body.queryResult.intent.displayName;
@@ -183,19 +188,42 @@ router.post('/search', (req, res)=> {
                             console.log('Resulted in null return');
                         } else{
                             var freeTime = docs[0].time;
-                            new Schedule({
-                                rescueeId: rId,
-                                token: token,
-                                time: freeTime
-                            }).save().then((savedTime)=>{
-                                console.log(savedTime);
-                                dateString = savedTime;
-                                var response = {
-                                    'fulfillment_text': 'Your call has been scheduled for '+savedTime.toString()
-                                }
-
-                                res.json(response);
-                            })
+                            var curTime = new  Date();
+                            
+                            //Check for sys time
+                            if(curTime<freeTime){
+                                docs[0].time = addMinutes(freeTime, 5);
+                                docs[0].save();
+                                new Schedule({
+                                    rescueeId: rId,
+                                    token: token,
+                                    time: addMinutes(freeTime,5) //After 5mins
+                                }).save().then((savedTime)=>{
+                                    console.log(savedTime);
+                                    dateString = savedTime.time;
+                                    var response = {
+                                        'fulfillment_text': 'Your call has been scheduled for '+dateString.toString()
+                                    }
+                                    //Update the time
+                                    res.json(response);
+                                })
+                            } else {
+                                docs[0].time = addMinutes(curTime, 7);
+                                docs[0].save();
+                                new Schedule({
+                                    rescueeId: rId,
+                                    token: token,
+                                    time: addMinutes(curTime, 2) //Within a minute
+                                }).save().then((savedTime)=>{
+                                    console.log(savedTime);
+                                    dateString = savedTime.time;
+                                    var response = {
+                                        'fulfillment_text': 'Your call has been scheduled for '+dateString.toString()
+                                    }
+                                    //Update the time
+                                    res.json(response);
+                                })
+                            }
                         }
                     })
             }
