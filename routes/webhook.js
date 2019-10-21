@@ -12,7 +12,6 @@ router.use(express.urlencoded({extended: true}));
 
 router.post('/search', (req, res)=> {
     //Use intent name to give diff response
-    
     const intentName = req.body.queryResult.intent.displayName;
 
     
@@ -22,6 +21,7 @@ router.post('/search', (req, res)=> {
      //Create a response object
      var response = {
         'fulfillment_text': fulfillment_text,
+        
     }
 
     if(intentName == 'searchByName'){
@@ -45,6 +45,14 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': fulfillment_text,
+                "outputContexts": [
+                    {
+                      "lifespanCount": 8,
+                      "parameters": {
+                        name: name
+                      }
+                    }]
+            
             }
 
             res.json(response);
@@ -76,6 +84,13 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': condition,
+                "outputContexts": [
+                    {
+                      "lifespanCount": 8,
+                      "parameters": {
+                        name: name
+                      }
+                    }]
             }
 
             res.json(response);
@@ -92,6 +107,13 @@ router.post('/search', (req, res)=> {
                 fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                 response = {
                     'fulfillment_text': fulfillment_text,
+                    "outputContexts": [
+                        {
+                          "lifespanCount": 8,
+                          "parameters": {
+                            name: name
+                          }
+                        }]
                 }
                 res.json(response);
             }
@@ -100,6 +122,13 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'There were multiple matches, please enter the age';
                     response = {
                         'fulfillment_text': fulfillment_text,
+                        "outputContexts": [
+                            {
+                              "lifespanCount": 8,
+                              "parameters": {
+                                name: name
+                              }
+                            }]
                     }
                     res.json(response);
                 }
@@ -107,6 +136,13 @@ router.post('/search', (req, res)=> {
                     fulfillment_text = 'We couldnt find '+name+' in our database but we are rescuing more people and bringing them to our camps as we speak';
                     response = {
                         'fulfillment_text': fulfillment_text,
+                        "outputContexts": [
+                            {
+                              "lifespanCount": 8,
+                              "parameters": {
+                                name: name
+                              }
+                            }]
                     }
                     res.json(response);
                 }
@@ -119,6 +155,13 @@ router.post('/search', (req, res)=> {
 
                         response = {
                             'fulfillment_text': fulfillment_text,
+                            "outputContexts": [
+                                {
+                                  "lifespanCount": 8,
+                                  "parameters": {
+                                    name: name
+                                  }
+                                }]
                         }
                         res.json(response);
                     });
@@ -152,6 +195,13 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': fulfillment_text,
+                "outputContexts": [
+                    {
+                      "lifespanCount": 8,
+                      "parameters": {
+                        name: name
+                      }
+                    }]
             }
 
             res.json(response);
@@ -178,13 +228,20 @@ router.post('/search', (req, res)=> {
             }
             response = {
                 'fulfillment_text': fulfillment_text,
+                "outputContexts": [
+                    {
+                      "lifespanCount": 8,
+                      "parameters": {
+                        name: name
+                      }
+                    }]
             }
 
             res.json(response);
         });
     }
     else if(intentName == 'getUID'){
-        // const token = req.body.queryResult.parameters.token.token;
+        // const token = req.body.queryResult.parameters.token;
         // const name = req.body.queryResult.parameters.name.name;
         console.log(req.body);
     }
