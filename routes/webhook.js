@@ -183,6 +183,11 @@ router.post('/search', (req, res)=> {
             res.json(response);
         });
     }
+    else if(intentName == 'getUID'){
+        // const token = req.body.queryResult.parameters.token.token;
+        // const name = req.body.queryResult.parameters.name.name;
+        console.log(req.body);
+    }
 
     // else if(intentName == 'connect'){
     //     //let them know if they can connect
