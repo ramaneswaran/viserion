@@ -183,7 +183,18 @@ router.post('/search', (req, res)=> {
                             console.log('Resulted in null return');
                         } else{
                             var freeTime = docs[0].time;
-                            console.log('Got the time ',freeTime);
+                            new Schedule({
+                                rescueeId: rId,
+                                token: token,
+                                time: freeTime
+                            }).save().then((savedTime)=>{
+                                console.log(savedTime);
+                                var response = {
+                                    'fulfillment_text': 'Your call has been scheduled for '+savedTime.toString
+                                }
+
+                                res.json(response);
+                            })
                         }
                     })
             }
