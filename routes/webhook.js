@@ -183,7 +183,7 @@ router.post('/search', (req, res)=> {
                             console.log('Resulted in null return');
                         } else{
                             var freeTime = docs[0].time;
-                            console.log('Got the time ',freetime);
+                            console.log('Got the time ',freeTime);
                         }
                     })
             }
