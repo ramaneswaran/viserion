@@ -8,6 +8,12 @@ const passportSetup = require('../config/passport-setup');
 //DB Models
 const Schedule = require('../models/Schedule');
 
+//Agora's keys
+options = {
+    AppID:  "f8bfc6e6ef824ef9b719490b994d6a96",
+    token: "006f8bfc6e6ef824ef9b719490b994d6a96IADaPN83ucHI1UIKhBlPTUDmZy+DvGteSi+uKt7r6XW9Dh/5z3QAAAAAEAD27b1wns2uXQEAAQCeza5d",
+    channelName: "connect"
+}
 
 
 //Setting up middleware for parsing post request
@@ -26,18 +32,20 @@ function addMinutes(date, minutes) {
 
 //Function to authenticate call
 const authorise = function(token){
-    Schedule.find({token: token }, (err, documents)=>{
+    Schedule.find({token: token }, (err, docs)=>{
         if(err) console.log(err);
         if(!docs){
             console.log("Null value returned");
         } else{
-            const initTime = docs[0].time;
-            const finTime = addMinutes(date, 5);
-            const curTime = new Date();
+            if(docs.length!=0){
+                const initTime = docs[0].time;
+                const finTime = addMinutes(date, 5);
+                const curTime = new Date();
 
-            if( (curTime >= initTime) && (finalTime> curTime)){
-                return true;
-            }else return false
+                if( (curTime >= initTime) && (finalTime> curTime)){
+                    return true;
+                }else return false
+            } else return false
         }
     })
 }

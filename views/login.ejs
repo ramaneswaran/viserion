@@ -5,10 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <style>
+        .login{
+            margin-top:5%;
+            margin-left: 5%;
+            width: 40%;
+        }
+        .btn{
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
     
-    This is the login page
-    <a href=/index/google>Sign in using google</a>
+    <div class="login">
+        <h4>Please sign in with your Google Id</h4>
+        <hr>
+        <br>
+    <div class="btn white darken-4 col s10 m4">
+            <a href=/index/google style="text-transform:none">
+                <div class="left">
+                    <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                </div>
+                Login with Google
+            </a>
+       </div>
+    </div>
 </body>
 </html>

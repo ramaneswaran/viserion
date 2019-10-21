@@ -8,6 +8,16 @@
   <title>Basic Communication</title>
   <link rel="stylesheet" href="/assets/common.css" />
 </head>
+<style>
+  body{
+    margin-top: 3%;
+  }
+
+  #option, #keys{
+    margin-left: 2%;
+    margin-bottom: 2%;
+  }
+</style>
 <body class="agora-theme">
     
   <div class="navbar-fixed">
@@ -110,6 +120,16 @@
       </div>
     </div>
   </form>
+  <div id='keys'>
+      <% if(allowed === true) {%>
+        <h4>Here are your keys</h4>
+    <% } else{ %>
+      <h4>No call scheduled right now</h4>
+    <% } %>
+  </div>
+  <div id='option'>
+      <a class="waves-effect waves-light btn" href='/index/profile'>Return to profile</a>
+  </div>
   <script src="/vendor/jquery.min.js"></script>
   <script src="/vendor/materialize.min.js"></script>
   <script src="/assets/AgoraRTCSDK-2.9.0.js"></script>

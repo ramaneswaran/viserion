@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>   <link rel="SHORTCUT ICON" href="img/icon1.ico"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>   
+    <link rel="SHORTCUT ICON" href="img/icon1.ico"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <title>Profile</title>
+    
     <style>
         .navbar {
   overflow: hidden;
@@ -17,10 +21,6 @@
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
-      img {
-                width: 100px;
-                height:220px;
-            }
     </style>
 </head>
 <body>
@@ -31,20 +31,22 @@
                 <div class="row justify-content-center" >
                  <div class="card" style="width: 18rem; margin-right: 7%;">
                   
-                    <img src="img/video_call.png" class="card-img-top" alt="...">
+                    <img src="/images/bot.png" class="card-img-top" alt="ChatBot">
                     <div class="card-body">
                       <h5 class="card-title">Tyrion</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href=/index/profile/tyrion class="btn btn-primary">Go somewhere</a>
+                      <p class="card-text">Our bot Tyrion can assist you in searching for your loved one.<br> Say Hi! to him</p>
+                      <a href=/index/profile/tyrion class="btn btn-primary">Talk to Tyrion</a>
                     </div>
                  </div>
              
-                 <div class="card" style="width: 18rem;margin-left: 7%;">
-                    <img src="img/chat_box.png" class="card-img-top" alt="...">
+                 <div class="card" style="width: 20rem;margin-left: 7%;">
+      
+                    <img src="/images/video-call.png" height="50%" width="60%"  class="card-img-top" alt="Video Call">
                     <div class="card-body">
+                      <br>
                       <h5 class="card-title">Connect</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="/index/profile/connect" class="btn btn-primary">Go somewhere</a>
+                      <p class="card-text">Use Agora's RTCs to connect with your loved ones. Schedule a call now using Tyrion our helpful chatbot</p>
+                      <a href="/index/profile/connect" class="btn btn-primary">Connect to call</a>
                     </div>
       
                  </div>
@@ -54,6 +56,9 @@
                 </div>
                </div>
               </div>
+              <div class="alert alert-warning" role="alert">
               <h4>Your Unique Token is : <%= user.uid %></h4>
+              <h6>Keep this token safe. It will be used for calls</h6>
+              </div>
 </body>
 </html>
