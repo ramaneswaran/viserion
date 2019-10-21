@@ -167,26 +167,19 @@ router.post('/search', (req, res)=> {
     else if(intentName == 'getUID'){
         const token = req.body.queryResult.parameters.token;
         const name = req.body.queryResult.parameters.name.name;
-        const rId = '';
+        var rId = '';
         Survivor.find({name: {"$regex": name, "$options": "i"}}, (err, docs)=> {
             if(err) console.log(err);
+
             if(!docs) {
                 console.log('Resulted in null return');
-             } else {
-                 rId = docs[0].id;
-                 Time.find({}, (err, docs)=>{
-                     new Schedule({
-                         rescueeId: rId,
-                         token: token,
-                         time: docs[0].time
-                     }).save().then((savedUser)=>{
-                         console.log(savedUser);
-                     });
-                 });
-             }       
+                } else {
+                    rId = docs[0].id;
+                    console.log('Got rId ',rId);
+            }
+        
+    
         });
     }
-    
-    
 });
 module.exports = router;
