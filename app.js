@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 
 require('dotenv/config');
 
+
 //Set up express app
 const app = express();
 
