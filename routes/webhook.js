@@ -182,8 +182,8 @@ router.post('/search', (req, res)=> {
                         if(!docs) {
                             console.log('Resulted in null return');
                         } else{
-                            freeTime = docs[0].time;
-                            console.log('Got the time ',time);
+                            var freeTime = docs[0].time;
+                            console.log('Got the time ',freetime);
                         }
                     })
             }
