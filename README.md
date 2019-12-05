@@ -39,7 +39,7 @@ iv) The calls are scheduled by Tyrion and the schedules stored in the database, 
 
 ### Profile Page
 
-![Profile Page]Screenshot_2019-10-26%20Profile.png)
+![Profile Page](Screenshot_2019-10-26%20Profile.png)
 
 ### Tyrion
 
