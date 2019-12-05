@@ -35,17 +35,17 @@ iv) The calls are scheduled by Tyrion and the schedules stored in the database, 
 
 ### HomePage
 
-![Home Page](https://github.com/ramaneswaran/aegon/blob/master/index.PNG)
+![Home Page](index.PNG)
 
 ### Profile Page
 
-![Profile Page](https://github.com/ramaneswaran/aegon/blob/master/Screenshot_2019-10-26%20Profile.png)
+![Profile Page]Screenshot_2019-10-26%20Profile.png)
 
 ### Tyrion
 
-![Tyrion](https://github.com/ramaneswaran/aegon/blob/master/Screenshot_2019-10-26%20Tyrion.png)
+![Tyrion](Screenshot_2019-10-26%20Tyrion.png)
 
 ### Connect
 
-![Connnect](https://github.com/ramaneswaran/aegon/blob/master/Screenshot_2019-10-26%20Basic%20Communication.png)
+![Connnect](Screenshot_2019-10-26%20Basic%20Communication.png)
   
